@@ -4,20 +4,20 @@ ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: 7241771982285646821
-    second: metarig|CubeAction
+      74: 2644253976366617020
+    second: player|_Rest
   - first:
-      74: -5003131165045108139
-    second: metarig|PoseLib
-  - first:
-      74: 7579190682581229847
-    second: metarig|PoseLib.002
-  - first:
-      74: 2933577835342229695
-    second: metarig|Walk
+      74: 1129413225755825676
+    second: player|allah
   - first:
       74: 7201240671855492006
     second: player|Crouch
+  - first:
+      74: 8973064949488511195
+    second: player|CubeAction
+  - first:
+      74: 8766509990179597253
+    second: player|Idle
   - first:
       74: -2501438688316764865
     second: player|PoseLib

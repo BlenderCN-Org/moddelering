@@ -4,47 +4,47 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private CharacterController characterController;
-    private Animator animator;
-    public float speed = 6.0f;
-    public float jumpSpeed = 8.0f;
-    public float gravity = 20.0f;
-    private float xInput;
-    private float yInput;
+    public CharacterController controller;
+    public Transform groundCheck;
+    public float groundDistance = 500f;
+    public LayerMask groundMask;
 
-    private Vector3 moveDirection = Vector3.zero;
+    public float speed = 12f;
+    public float gravity = -9.81f;
+    public float jumpHeight = 1000f;
+
+    Vector3 velocity;
+    bool isGrounded;
+
+    Animator animator;
+
     private void Start()
     {
-        characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
     }
     void Update()
     {
-        xInput = Input.GetAxis("Horizontal");
-        yInput = Input.GetAxis("Vertical");
-        float groundSpeed = 0;
-        if (characterController.isGrounded)
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if (isGrounded && velocity.y < 0)
         {
-            // We are grounded, so recalculate
-            // move direction directly from axes
-
-            moveDirection = new Vector3(xInput, 0.0f, yInput);
-            moveDirection *= speed;
-            groundSpeed = speed;
-            if (Input.GetButton("Jump"))
-            {
-                moveDirection.y = jumpSpeed;
-            }
+            velocity.y = 0f;
         }
-        animator.SetFloat("Speed", speed);
-        animator.SetFloat("xInput", xInput);
-        animator.SetFloat("yInput", yInput);
-        // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
-        // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
-        // as an acceleration (ms^-2)
-        moveDirection.y -= gravity * Time.deltaTime;
 
-        // Move the controller
-        characterController.Move(moveDirection * Time.deltaTime);
+
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        Vector3 move = transform.right * x + transform.forward * z;
+        controller.Move(move * speed * Time.deltaTime);
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y += Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+
+        velocity.y += gravity * Time.deltaTime;
+        // a = m/s^2
+        controller.Move(velocity * Time.deltaTime);
     }
 }
