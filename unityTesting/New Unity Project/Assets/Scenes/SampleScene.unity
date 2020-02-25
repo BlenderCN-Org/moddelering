@@ -1616,7 +1616,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1.274
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6057140222963153312, guid: f2c49d4f309124246882a8aaa54d006b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f2c49d4f309124246882a8aaa54d006b, type: 3}
 --- !u!4 &1650865346 stripped
 Transform:
@@ -2030,10 +2031,10 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994545138}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f2c49d4f309124246882a8aaa54d006b, type: 3}
   m_Controller: {fileID: 9100000, guid: 02a29bf701a47d84fabdb51c42611de0, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
@@ -2151,7 +2152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &2102665866
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2211,7 +2212,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102665865}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 13, y: 6.2, z: -24.76}
+  m_LocalPosition: {x: 11.35, y: 2.23, z: -31.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

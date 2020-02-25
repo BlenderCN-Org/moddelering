@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = -9.81f;
     public float jumpHeight = 1000f;
 
+    private float x;
+    private float z;
+    private bool crouching = false;
     Vector3 velocity;
     bool isGrounded;
 
@@ -32,8 +35,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        x = Input.GetAxis("Horizontal");      
+        z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
@@ -43,8 +46,24 @@ public class PlayerMovement : MonoBehaviour
             velocity.y += Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
+        SetAnimations();
+
         velocity.y += gravity * Time.deltaTime;
         // a = m/s^2
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    private bool isCrouching = false;
+    private void SetAnimations()
+    {
+        if (Input.GetButtonDown("Crouch"))
+        {
+            animator.SetBool("Crouch", true);
+
+        }else if (Input.GetButtonUp("Crouch"))
+        {
+            animator.SetBool("Crouch", false);
+        }
+            animator.SetFloat("Speed", z);
     }
 }
